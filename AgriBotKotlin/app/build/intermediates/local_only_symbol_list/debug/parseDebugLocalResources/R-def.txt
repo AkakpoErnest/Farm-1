@@ -1,0 +1,13 @@
+R_DEF: Internal format may change without notice
+local
+id bottom_nav
+id fragment_container
+id nav_chat
+id nav_dashboard
+id nav_market
+id nav_profile
+id nav_tools
+id nav_weather
+layout activity_main
+menu bottom_nav_menu
+string app_name

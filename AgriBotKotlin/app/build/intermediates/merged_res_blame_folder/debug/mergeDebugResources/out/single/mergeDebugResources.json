@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/pablo/.gradle/daemon/8.6/com.agribot.ghana.app-debug-48:/layout_activity_main.xml.flat",
+        "source": "/Users/pablo/.gradle/daemon/8.6/com.agribot.ghana.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.agribot.ghana.app-debug-48:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.agribot.ghana.app-main-50:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "/Users/pablo/.gradle/daemon/8.6/com.agribot.ghana.app-debug-48:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/pablo/.gradle/daemon/8.6/com.agribot.ghana.app-main-50:/menu/bottom_nav_menu.xml"
+    }
+]

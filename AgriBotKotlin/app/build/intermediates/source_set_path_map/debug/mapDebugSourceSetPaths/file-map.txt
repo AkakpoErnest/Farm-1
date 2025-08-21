@@ -1,0 +1,51 @@
+com.agribot.ghana.app-jetified-appcompat-resources-1.6.1-0 /Users/pablo/.gradle/caches/transforms-4/036b08a0989d050f57aa729a413e7091/transformed/jetified-appcompat-resources-1.6.1/res
+com.agribot.ghana.app-jetified-emoji2-1.2.0-1 /Users/pablo/.gradle/caches/transforms-4/134dd6df4d8a0cab0f655cd16e2f131d/transformed/jetified-emoji2-1.2.0/res
+com.agribot.ghana.app-navigation-ui-2.7.7-2 /Users/pablo/.gradle/caches/transforms-4/15782a20aaee278eaa5e176a76bc7db9/transformed/navigation-ui-2.7.7/res
+com.agribot.ghana.app-navigation-fragment-2.7.7-3 /Users/pablo/.gradle/caches/transforms-4/18706a1b7975379488c14fe553cd0263/transformed/navigation-fragment-2.7.7/res
+com.agribot.ghana.app-navigation-fragment-ktx-2.7.7-4 /Users/pablo/.gradle/caches/transforms-4/2468941326887f83f3b9cfae5c6223c4/transformed/navigation-fragment-ktx-2.7.7/res
+com.agribot.ghana.app-lifecycle-livedata-core-2.6.2-5 /Users/pablo/.gradle/caches/transforms-4/32094325027acd9d4357523cad654771/transformed/lifecycle-livedata-core-2.6.2/res
+com.agribot.ghana.app-jetified-annotation-experimental-1.3.0-6 /Users/pablo/.gradle/caches/transforms-4/348fa6855c0386fd451077d41cddb8f7/transformed/jetified-annotation-experimental-1.3.0/res
+com.agribot.ghana.app-navigation-runtime-ktx-2.7.7-7 /Users/pablo/.gradle/caches/transforms-4/35898276db7f6e290bd9f371171bfb51/transformed/navigation-runtime-ktx-2.7.7/res
+com.agribot.ghana.app-coordinatorlayout-1.1.0-8 /Users/pablo/.gradle/caches/transforms-4/3671bf60b9403407a828369c333f347f/transformed/coordinatorlayout-1.1.0/res
+com.agribot.ghana.app-jetified-lifecycle-viewmodel-savedstate-2.6.2-9 /Users/pablo/.gradle/caches/transforms-4/3821ffb8d53ad66332805fd675828d13/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/res
+com.agribot.ghana.app-fragment-1.6.2-10 /Users/pablo/.gradle/caches/transforms-4/3c64972d3d84462ac2df18b5bda7b51c/transformed/fragment-1.6.2/res
+com.agribot.ghana.app-jetified-startup-runtime-1.1.1-11 /Users/pablo/.gradle/caches/transforms-4/418cfc3e219b5835ca1c6d7807dd27a4/transformed/jetified-startup-runtime-1.1.1/res
+com.agribot.ghana.app-jetified-activity-1.8.0-12 /Users/pablo/.gradle/caches/transforms-4/4299ade5dca93e45c62698238a12177a/transformed/jetified-activity-1.8.0/res
+com.agribot.ghana.app-jetified-viewpager2-1.1.0-beta02-13 /Users/pablo/.gradle/caches/transforms-4/431fe3552580ecf0a44df3b1ce5c635b/transformed/jetified-viewpager2-1.1.0-beta02/res
+com.agribot.ghana.app-jetified-window-1.0.0-14 /Users/pablo/.gradle/caches/transforms-4/45d09ac82008b4b4328234e1928004a3/transformed/jetified-window-1.0.0/res
+com.agribot.ghana.app-jetified-core-ktx-1.12.0-15 /Users/pablo/.gradle/caches/transforms-4/4630ca5e00f9023a57069d370fc74a1a/transformed/jetified-core-ktx-1.12.0/res
+com.agribot.ghana.app-jetified-savedstate-1.2.1-16 /Users/pablo/.gradle/caches/transforms-4/4776e258f668d41390df232c327478ae/transformed/jetified-savedstate-1.2.1/res
+com.agribot.ghana.app-transition-1.4.1-17 /Users/pablo/.gradle/caches/transforms-4/47bb9f7af01a7564aae6448b175ff1f9/transformed/transition-1.4.1/res
+com.agribot.ghana.app-drawerlayout-1.1.1-18 /Users/pablo/.gradle/caches/transforms-4/564eabf43564284a0f5edcabb897efe9/transformed/drawerlayout-1.1.1/res
+com.agribot.ghana.app-core-runtime-2.2.0-19 /Users/pablo/.gradle/caches/transforms-4/56e461dd900682db42391eb94613295b/transformed/core-runtime-2.2.0/res
+com.agribot.ghana.app-core-1.12.0-20 /Users/pablo/.gradle/caches/transforms-4/5b7774c95df4f71cdfc141a3eb2aa793/transformed/core-1.12.0/res
+com.agribot.ghana.app-constraintlayout-2.1.4-21 /Users/pablo/.gradle/caches/transforms-4/5c4ca7647a5e6f7f051db3a85ac3d167/transformed/constraintlayout-2.1.4/res
+com.agribot.ghana.app-lifecycle-runtime-2.6.2-22 /Users/pablo/.gradle/caches/transforms-4/5f5cf9bc8a478441a4442508e24fdc61/transformed/lifecycle-runtime-2.6.2/res
+com.agribot.ghana.app-recyclerview-1.3.2-23 /Users/pablo/.gradle/caches/transforms-4/610c4f44041812de794fc678563d8679/transformed/recyclerview-1.3.2/res
+com.agribot.ghana.app-material-1.10.0-24 /Users/pablo/.gradle/caches/transforms-4/6163f1fae64929464e16a395393a28cc/transformed/material-1.10.0/res
+com.agribot.ghana.app-jetified-customview-poolingcontainer-1.0.0-25 /Users/pablo/.gradle/caches/transforms-4/89c20a3ffd2f46ec0bcd9028a41a0616/transformed/jetified-customview-poolingcontainer-1.0.0/res
+com.agribot.ghana.app-jetified-lifecycle-process-2.6.2-26 /Users/pablo/.gradle/caches/transforms-4/900cee55c369eb4f8649c0602d210a05/transformed/jetified-lifecycle-process-2.6.2/res
+com.agribot.ghana.app-jetified-emoji2-views-helper-1.2.0-27 /Users/pablo/.gradle/caches/transforms-4/919e4e927cdd5c77200fec5c6f1583ca/transformed/jetified-emoji2-views-helper-1.2.0/res
+com.agribot.ghana.app-appcompat-1.6.1-28 /Users/pablo/.gradle/caches/transforms-4/96f141bd75103e7f8aaa5f89a06d278d/transformed/appcompat-1.6.1/res
+com.agribot.ghana.app-jetified-lifecycle-viewmodel-ktx-2.6.2-29 /Users/pablo/.gradle/caches/transforms-4/97ac4c9d5663901bbbb003f65d2d79e6/transformed/jetified-lifecycle-viewmodel-ktx-2.6.2/res
+com.agribot.ghana.app-jetified-profileinstaller-1.3.0-30 /Users/pablo/.gradle/caches/transforms-4/a185a89a9a1be7b1cfc743ceb81ec6ab/transformed/jetified-profileinstaller-1.3.0/res
+com.agribot.ghana.app-slidingpanelayout-1.2.0-31 /Users/pablo/.gradle/caches/transforms-4/ab3eb4413257da8c0a016ba8970b014d/transformed/slidingpanelayout-1.2.0/res
+com.agribot.ghana.app-jetified-lifecycle-runtime-ktx-2.6.2-32 /Users/pablo/.gradle/caches/transforms-4/bc9a3648964a99f3626f8dc1b4a6c8fa/transformed/jetified-lifecycle-runtime-ktx-2.6.2/res
+com.agribot.ghana.app-jetified-savedstate-ktx-1.2.1-33 /Users/pablo/.gradle/caches/transforms-4/cd577add8f56af4e28c9042c4a7fe257/transformed/jetified-savedstate-ktx-1.2.1/res
+com.agribot.ghana.app-cardview-1.0.0-34 /Users/pablo/.gradle/caches/transforms-4/d261342da0327b3cfc82249630644165/transformed/cardview-1.0.0/res
+com.agribot.ghana.app-jetified-lifecycle-livedata-core-ktx-2.6.2-35 /Users/pablo/.gradle/caches/transforms-4/d291545b3b669c57d9613067e695ca53/transformed/jetified-lifecycle-livedata-core-ktx-2.6.2/res
+com.agribot.ghana.app-jetified-fragment-ktx-1.6.2-36 /Users/pablo/.gradle/caches/transforms-4/d5de78427c50da6128ab6030775ce5fc/transformed/jetified-fragment-ktx-1.6.2/res
+com.agribot.ghana.app-lifecycle-livedata-2.6.2-37 /Users/pablo/.gradle/caches/transforms-4/db1fb514217fde9d8ce6bc1ed7414423/transformed/lifecycle-livedata-2.6.2/res
+com.agribot.ghana.app-jetified-activity-ktx-1.8.0-38 /Users/pablo/.gradle/caches/transforms-4/dfa40907040bc65554571ac305ea2c12/transformed/jetified-activity-ktx-1.8.0/res
+com.agribot.ghana.app-navigation-common-ktx-2.7.7-39 /Users/pablo/.gradle/caches/transforms-4/e20cd4552e1ee436d620973878f97b95/transformed/navigation-common-ktx-2.7.7/res
+com.agribot.ghana.app-navigation-common-2.7.7-40 /Users/pablo/.gradle/caches/transforms-4/f499e29e52023879cacf67b836705690/transformed/navigation-common-2.7.7/res
+com.agribot.ghana.app-navigation-ui-ktx-2.7.7-41 /Users/pablo/.gradle/caches/transforms-4/f4e6e31864cde3a81243fd3b5daa02d2/transformed/navigation-ui-ktx-2.7.7/res
+com.agribot.ghana.app-navigation-runtime-2.7.7-42 /Users/pablo/.gradle/caches/transforms-4/f603582b51f68d17f228e71d84fd8f26/transformed/navigation-runtime-2.7.7/res
+com.agribot.ghana.app-lifecycle-viewmodel-2.6.2-43 /Users/pablo/.gradle/caches/transforms-4/f8b110a618903d9a44a81cf8c1cc05ea/transformed/lifecycle-viewmodel-2.6.2/res
+com.agribot.ghana.app-pngs-44 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/build/generated/res/pngs/debug
+com.agribot.ghana.app-resValues-45 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/build/generated/res/resValues/debug
+com.agribot.ghana.app-packageDebugResources-46 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.agribot.ghana.app-packageDebugResources-47 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.agribot.ghana.app-debug-48 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.agribot.ghana.app-debug-49 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/src/debug/res
+com.agribot.ghana.app-main-50 /Users/pablo/Downloads/Farm 1/AgriBotKotlin/app/src/main/res
