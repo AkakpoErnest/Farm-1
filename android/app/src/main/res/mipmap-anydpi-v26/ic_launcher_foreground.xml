@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Background circle -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M54,8a46,46 0 1,1 0,92a46,46 0 1,1 0,-92z"/>
+    
+    <!-- Agribot Logo Design -->
+    <!-- Main robot head -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,35h28v20h-28z"/>
+    
+    <!-- Robot eyes -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M45,40a3,3 0 1,1 0,6a3,3 0 1,1 0,-6z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M63,40a3,3 0 1,1 0,6a3,3 0 1,1 0,-6z"/>
+    
+    <!-- Robot mouth -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M48,50h12v2h-12z"/>
+    
+    <!-- Antenna -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M52,35v-8h4v8"/>
+    
+    <!-- Antenna light -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M52,27a2,2 0 1,1 0,4a2,2 0 1,1 0,-4z"/>
+    
+    <!-- Agriculture symbol -->
+    <path
+        android:fillColor="#A5D6A7"
+        android:pathData="M54,65a8,8 0 1,1 0,16a8,8 0 1,1 0,-16z"/>
+    
+    <!-- Leaf design -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M54,65c-4,0 -6,2 -6,6c0,4 2,6 6,6c4,0 6,-2 6,-6c0,-4 -2,-6 -6,-6z"/>
+</vector>
+
+
+
