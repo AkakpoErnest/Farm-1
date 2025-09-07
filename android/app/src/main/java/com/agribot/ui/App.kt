@@ -80,11 +80,14 @@ import androidx.compose.material.icons.filled.Thermostat
 import androidx.compose.material.icons.filled.WaterDrop
 import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.CalendarToday
+import androidx.compose.material.icons.filled.Grass
+import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.Event
 import com.agribot.ui.screens.ExpertsScreen
 import com.agribot.ui.screens.FarmersScreen
 import com.agribot.ui.screens.RegisterFarmerScreen
 import com.agribot.ui.screens.SubsidiesScreen
-import com.agribot.ui.screens.FarmToolsScreen
+import com.agribot.ui.screens.CalendarScreen
 import com.agribot.ui.screens.ExpertsDetailedScreen
 import com.agribot.ui.screens.FarmersDetailedScreen
 import com.agribot.ui.screens.RegisterFarmerDetailedScreen
@@ -92,7 +95,11 @@ import com.agribot.ui.screens.SubsidiesDetailedScreen
 import com.agribot.ui.screens.LanguageTranslations
 import com.agribot.ui.theme.PrimaryGreen
 import com.agribot.data.User
+import com.agribot.data.CalendarEventsManager
+import com.agribot.ui.screens.CalendarEvent
+import com.agribot.ui.screens.EventType
 import com.agribot.ui.theme.SecondaryGreen
+import java.time.format.DateTimeFormatter
 import com.agribot.ui.theme.LightGreen
 import com.agribot.ui.theme.AccentGold
 import com.agribot.ui.theme.WarmBrown
@@ -124,7 +131,7 @@ sealed class Dest(val route: String, val label: String) {
     data object Chat : Dest("chat", "Chat")
     data object Weather : Dest("weather", "Weather")
     data object Market : Dest("market", "Market")
-    data object FarmTools : Dest("farm_tools", "Tools")
+    data object Calendar : Dest("calendar", "Calendar")
     data object Profile : Dest("profile", "Profile")
 
     data object Experts : Dest("experts", "Experts")
@@ -143,7 +150,7 @@ sealed class Dest(val route: String, val label: String) {
 @Composable
 fun AgribotApp(currentUser: User? = null, authViewModel: com.agribot.ui.auth.AuthViewModel? = null) {
     val navController = rememberNavController()
-    val items = listOf(Dest.Home, Dest.Chat, Dest.Weather, Dest.Market, Dest.FarmTools, Dest.Profile)
+    val items = listOf(Dest.Home, Dest.Chat, Dest.Weather, Dest.Market, Dest.Calendar, Dest.Profile)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     
@@ -158,7 +165,7 @@ fun AgribotApp(currentUser: User? = null, authViewModel: com.agribot.ui.auth.Aut
                 Dest.Chat.route -> Dest.Chat.label
                 Dest.Weather.route -> Dest.Weather.label
                 Dest.Market.route -> Dest.Market.label
-                Dest.FarmTools.route -> Dest.FarmTools.label
+                Dest.Calendar.route -> Dest.Calendar.label
                 Dest.Profile.route -> Dest.Profile.label
                 Dest.Experts.route -> Dest.Experts.label
                 Dest.Farmers.route -> Dest.Farmers.label
@@ -220,7 +227,7 @@ fun AgribotApp(currentUser: User? = null, authViewModel: com.agribot.ui.auth.Aut
                 composable(Dest.Chat.route) { ChatScreen(selectedLanguage = selectedLanguage) }
                 composable(Dest.Weather.route) { WeatherScreen(selectedLanguage = selectedLanguage) }
                 composable(Dest.Market.route) { MarketScreen(selectedLanguage = selectedLanguage) }
-                composable(Dest.FarmTools.route) { FarmToolsScreen(selectedLanguage = selectedLanguage) }
+                composable(Dest.Calendar.route) { CalendarScreen(selectedLanguage = selectedLanguage) }
                 composable(Dest.Profile.route) { ProfileScreen(selectedLanguage = selectedLanguage, currentUser = currentUser, authViewModel = authViewModel) }
 
                 composable(Dest.Experts.route) { ExpertsScreen(selectedLanguage = selectedLanguage) }
@@ -617,7 +624,7 @@ private fun BottomBar(navController: NavHostController, items: List<Dest>) {
                 Dest.Chat -> Icons.AutoMirrored.Filled.Chat
                 Dest.Weather -> Icons.Filled.WbSunny
                 Dest.Market -> Icons.Filled.ShoppingCart
-                Dest.FarmTools -> Icons.Filled.Agriculture
+                Dest.Calendar -> Icons.Filled.CalendarToday
                 Dest.Profile -> Icons.Filled.Person
                 else -> Icons.Filled.Home
             }
@@ -796,7 +803,7 @@ private fun HomeLanding(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        "THE NEW ERA OF AGRICULTURE",
+                        LanguageTranslations.getLocalizedText("New Era of Agriculture", selectedLanguage),
                         style = MaterialTheme.typography.headlineMedium.copy(
                             fontWeight = FontWeight.Bold,
                             color = Color.White,
@@ -806,7 +813,7 @@ private fun HomeLanding(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        "Sustainable farming solutions for a better tomorrow",
+                        LanguageTranslations.getLocalizedText("Sustainable farming solutions for a better tomorrow", selectedLanguage),
                         style = MaterialTheme.typography.titleMedium.copy(
                             color = Color.White.copy(alpha = 0.9f),
                             letterSpacing = 0.3.sp,
@@ -874,19 +881,19 @@ private fun HomeLanding(
                             WeatherMetric(
                                 icon = Icons.Filled.Cloud,
                                 value = "+16°C",
-                                label = "Temperature",
+                                label = LanguageTranslations.getLocalizedText("Temperature", selectedLanguage),
                                 iconTint = Color.White
                             )
                             WeatherMetric(
                                 icon = Icons.Filled.Thermostat,
                                 value = "22°C",
-                                label = "Soil temp",
+                                label = LanguageTranslations.getLocalizedText("Soil temp", selectedLanguage),
                                 iconTint = LightGreen
                             )
                             WeatherMetric(
                                 icon = Icons.Filled.WaterDrop,
                                 value = "68%",
-                                label = "Humidity",
+                                label = LanguageTranslations.getLocalizedText("Humidity", selectedLanguage),
                                 iconTint = InfoBlue
                             )
                         }
@@ -1019,8 +1026,15 @@ private fun HomeLanding(
                 }
             }
             
-            // Crop Calendar Section
+            // Upcoming Events Section
             item {
+                // Initialize calendar events
+                LaunchedEffect(Unit) {
+                    CalendarEventsManager.initializeSampleEvents()
+                }
+                
+                val upcomingEvents = CalendarEventsManager.getUpcomingEvents(4)
+                
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -1032,50 +1046,62 @@ private fun HomeLanding(
                 ) {
                     Column(modifier = Modifier.padding(20.dp)) {
                         Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Icon(
-                                Icons.Filled.CalendarToday,
-                                contentDescription = "Calendar",
-                                modifier = Modifier.size(28.dp),
-                                tint = PrimaryGreen
-                            )
-                            Spacer(modifier = Modifier.size(12.dp))
-                            Text(
-                                "This Month's Farming Calendar",
-                                style = MaterialTheme.typography.titleLarge.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    color = DarkText
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    Icons.Filled.CalendarToday,
+                                    contentDescription = "Calendar",
+                                    modifier = Modifier.size(28.dp),
+                                    tint = PrimaryGreen
                                 )
-                            )
+                                Spacer(modifier = Modifier.size(12.dp))
+                                Text(
+                                    LanguageTranslations.getLocalizedText("Upcoming Farming Events", selectedLanguage),
+                                    style = MaterialTheme.typography.titleLarge.copy(
+                                        fontWeight = FontWeight.Bold,
+                                        color = DarkText
+                                    )
+                                )
+                            }
+                            Button(
+                                onClick = { navController.navigate(Dest.Calendar.route) },
+                                colors = ButtonDefaults.buttonColors(containerColor = PrimaryGreen),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Text(
+                                    LanguageTranslations.getLocalizedText("View All", selectedLanguage),
+                                    style = MaterialTheme.typography.bodySmall.copy(
+                                        color = Color.White,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                )
+                            }
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         
-                        // Calendar Items
-                        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                            CalendarItem(
-                                date = "Week 1",
-                                activity = "Plant maize and beans",
-                                status = "In Progress",
-                                color = SuccessGreen
-                            )
-                            CalendarItem(
-                                date = "Week 2",
-                                activity = "Apply first fertilizer",
-                                status = "Upcoming",
-                                color = WarningOrange
-                            )
-                            CalendarItem(
-                                date = "Week 3",
-                                activity = "Pest control check",
-                                status = "Upcoming",
-                                color = InfoBlue
-                            )
-                            CalendarItem(
-                                date = "Week 4",
-                                activity = "Harvest early vegetables",
-                                status = "Upcoming",
-                                color = PrimaryGreen
+                        // Show upcoming events or default message
+                        if (upcomingEvents.isNotEmpty()) {
+                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                upcomingEvents.forEach { event ->
+                                    CalendarEventItem(
+                                        event = event,
+                                        selectedLanguage = selectedLanguage
+                                    )
+                                }
+                            }
+                        } else {
+                            Text(
+                                LanguageTranslations.getLocalizedText("No upcoming events. Add events in the Calendar tab.", selectedLanguage),
+                                style = MaterialTheme.typography.bodyMedium.copy(
+                                    color = MediumText,
+                                    textAlign = TextAlign.Center
+                                ),
+                                modifier = Modifier.fillMaxWidth()
                             )
                         }
                     }
@@ -1249,6 +1275,61 @@ private fun CalendarItem(
                     )
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun CalendarEventItem(
+    event: CalendarEvent,
+    selectedLanguage: String
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = SurfaceLight),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                when (event.type) {
+                    EventType.PLANTING -> Icons.Filled.Agriculture
+                    EventType.HARVEST -> Icons.Filled.Grass
+                    EventType.FERTILIZER -> Icons.Filled.Science
+                    EventType.PEST_CONTROL -> Icons.Filled.BugReport
+                    else -> Icons.Filled.Event
+                },
+                contentDescription = event.type.name,
+                tint = PrimaryGreen,
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    event.title,
+                    style = MaterialTheme.typography.titleSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = DarkText
+                    )
+                )
+                Text(
+                    event.description,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        color = MediumText
+                    )
+                )
+            }
+            
+            Text(
+                event.date.format(DateTimeFormatter.ofPattern("MMM dd")),
+                style = MaterialTheme.typography.bodySmall.copy(
+                    color = PrimaryGreen,
+                    fontWeight = FontWeight.SemiBold
+                )
+            )
         }
     }
 }

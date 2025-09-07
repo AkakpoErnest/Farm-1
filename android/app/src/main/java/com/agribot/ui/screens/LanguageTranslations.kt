@@ -20,8 +20,15 @@ object LanguageTranslations {
         "Chat" to "Chat",
         "Weather" to "Weather",
         "Market" to "Market",
-        "Tools" to "Tools",
+        "Calendar" to "Calendar",
         "Profile" to "Profile",
+        
+        // App Header & Welcome
+        "Hello" to "Hello",
+        "New Era of Agriculture" to "New Era of Agriculture",
+        "Welcome to AgriBot Ghana" to "Welcome to AgriBot Ghana",
+        "Your agricultural assistant" to "Your agricultural assistant",
+        "Sustainable farming solutions for a better tomorrow" to "Sustainable farming solutions for a better tomorrow",
         
         // Chat Screen
         "chat_title" to "Agribot Chat",
@@ -69,7 +76,58 @@ object LanguageTranslations {
         "profile_edit_profile" to "Edit Profile",
         "profile_settings" to "Settings",
         "profile_help_support" to "Help & Support",
-        "profile_logout" to "Logout"
+        "profile_logout" to "Logout",
+        
+        // Calendar Screen
+        "Calendar" to "Calendar",
+        "Farming Calendar" to "Farming Calendar",
+        "Add Farming Event" to "Add Farming Event",
+        "Event Title" to "Event Title",
+        "Description" to "Description",
+        "Event Type" to "Event Type",
+        "Add" to "Add",
+        "Cancel" to "Cancel",
+        "Events for" to "Events for",
+        "Seasonal Farming Guide" to "Seasonal Farming Guide",
+        "Planting Season" to "Planting Season",
+        "Rainy Season" to "Rainy Season",
+        "Harvest Season" to "Harvest Season",
+        "Dry Season" to "Dry Season",
+        
+        // Weather Labels
+        "Temperature" to "Temperature",
+        "Soil temp" to "Soil temp",
+        "Humidity" to "Humidity",
+        
+        // Event Types
+        "PLANTING" to "Planting",
+        "HARVEST" to "Harvest",
+        "FERTILIZER" to "Fertilizer",
+        "PEST_CONTROL" to "Pest Control",
+        "OTHER" to "Other",
+        
+        // Missing Calendar Keys
+        "Quick Actions" to "Quick Actions",
+        "All Farming Events" to "All Farming Events",
+        "Upcoming Farming Events" to "Upcoming Farming Events",
+        "View All" to "View All",
+        "No upcoming events. Add events in the Calendar tab." to "No upcoming events. Add events in the Calendar tab.",
+        "Delete" to "Delete",
+        
+        // Additional Calendar Keys
+        "Farming Calendar" to "Farming Calendar",
+        "Add Farming Event" to "Add Farming Event",
+        "Event Title" to "Event Title",
+        "Description" to "Description",
+        "Event Type" to "Event Type",
+        "Add" to "Add",
+        "Cancel" to "Cancel",
+        "Events for" to "Events for",
+        "Seasonal Farming Guide" to "Seasonal Farming Guide",
+        "Planting Season" to "Planting Season",
+        "Rainy Season" to "Rainy Season",
+        "Harvest Season" to "Harvest Season",
+        "Dry Season" to "Dry Season"
     )
     
     private val twiTranslations = mapOf(
@@ -78,8 +136,15 @@ object LanguageTranslations {
         "Chat" to "Kasa",
         "Weather" to "Sɛnkyerɛnne",
         "Market" to "Tiaa",
-        "Tools" to "Mfaso",
+        "Calendar" to "Kalenda",
         "Profile" to "Nkaabɔ",
+        
+        // App Header & Welcome
+        "Hello" to "Akyire",
+        "New Era of Agriculture" to "Kuayɛɛ Ho Bere Foforɔ",
+        "Welcome to AgriBot Ghana" to "Woaba AgriBot Ghana",
+        "Your agricultural assistant" to "Wo kuayɛɛ ho kyekyefo",
+        "Sustainable farming solutions for a better tomorrow" to "Kuayɛɛ ho solution a ɛyɛ sustainable ma ɛkyerɛɛ a ɛyɛ papa",
         
         // Home Screen
         "Hello, Farmers" to "Akyire, Kuayɛɛfo",
@@ -164,7 +229,58 @@ object LanguageTranslations {
         "profile_title" to "Nkaabɔ",
         "profile_farm_analytics" to "Kuayɛɛ Ho Analytics",
         "profile_details" to "Nkaabɔ Ho Details",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Weather Labels
+        "Temperature" to "Hyeɛ",
+        "Soil temp" to "Asaase hyeɛ",
+        "Humidity" to "Nsutiri ho",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ",
         "profile_quick_actions" to "Mfasoɛ A Ɛyɛ Mmerɛw",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ",
         "profile_edit_profile" to "Edit Nkaabɔ",
         "profile_settings" to "Settings",
         "profile_help_support" to "Help & Support",
@@ -339,11 +455,18 @@ object LanguageTranslations {
         "Chat" to "Kasa",
         "Weather" to "Sɛnkyerɛnne",
         "Market" to "Tiaa",
-        "Tools" to "Mfaso",
+        "Calendar" to "Kalenda",
         "Profile" to "Nkaabɔ",
         
+        // App Header & Welcome
+        "Hello" to "Akwaba",
+        "New Era of Agriculture" to "Kuayɛɛ Ho Bere Foforɔ",
+        "Welcome to AgriBot Ghana" to "Akwaba AgriBot Ghana",
+        "Your agricultural assistant" to "Wo kuayɛɛ ho kyekyefo",
+        "Sustainable farming solutions for a better tomorrow" to "Kuayɛɛ ho solution a ɛyɛ sustainable ma ɛkyerɛɛ a ɛyɛ papa",
+        
         // Home Screen
-        "Hello, Farmers" to "Akyire, Kuayɛɛfo",
+        "Hello, Farmers" to "Akwaba, Kuayɛɛfo",
         "Quick Actions" to "Mfasoɛ a ɛyɛ mmerɛw",
         "Get Professional Advice" to "Fa adwumayɛfo akwankyerɛ",
         "Connect with Community" to "Ka kyerɛ wo ho ne amanaman ntam",
@@ -385,15 +508,22 @@ object LanguageTranslations {
     private val eweTranslations = mapOf(
         // App Navigation
         "Home" to "Aƒe",
-        "Chat" to "Kasa",
-        "Weather" to "Sɛnkyerɛnne",
-        "Market" to "Tiaa",
-        "Tools" to "Mfaso",
-        "Profile" to "Nkaabɔ",
+        "Chat" to "Gblɔ",
+        "Weather" to "Dzɔdzɔ",
+        "Market" to "Dzɔdzɔ",
+        "Calendar" to "Kalenda",
+        "Profile" to "Nyawo",
+        
+        // App Header & Welcome
+        "Hello" to "Woezɔ",
+        "New Era of Agriculture" to "Agbɔgbɔ ƒe ƒeƒe",
+        "Welcome to AgriBot Ghana" to "Woezɔ AgriBot Ghana",
+        "Your agricultural assistant" to "Wo agbɔgbɔ ƒe kpekpe",
+        "Sustainable farming solutions for a better tomorrow" to "Agbɔgbɔ ƒe solution si le sustainable na ɖeɖe a le gbe",
         
         // Home Screen
-        "Hello, Farmers" to "Akyire, Kuayɛɛfo",
-        "Quick Actions" to "Mfasoɛ a ɛyɛ mmerɛw",
+        "Hello, Farmers" to "Woezɔ, Agbɔgbɔfo",
+        "Quick Actions" to "Mɔ a ɛyɛ mmerɛw",
         "Get Professional Advice" to "Fa adwumayɛfo akwankyerɛ",
         "Connect with Community" to "Ka kyerɛ wo ho ne amanaman ntam",
         "Join Our Network" to "Ka wo ho kyerɛ yɛn network ho",
@@ -401,15 +531,43 @@ object LanguageTranslations {
         "Search for crops, tools, or advice..." to "Hwehwɛ nhaban, mfasoɛ, anaa akwankyerɛ...",
         
         // Chat Screen
-        "Chat with Agribot" to "Kasa ne Agribot",
-        "Your AI agricultural assistant" to "Wo AI kuayɛɛ ho kyekyefo",
-        "Quick questions" to "Mfasoɛ a ɛyɛ mmerɛw",
+        "Chat with Agribot" to "Gblɔ ne Agribot",
+        "Your AI agricultural assistant" to "Wo AI agbɔgbɔ ƒe kpekpe",
+        "Quick questions" to "Mɔ a ɛyɛ mmerɛw",
         "Tell me about crops" to "Ka akyerɛ me nea ɛfa nhaban ho",
         "How to control pests?" to "Sɛnea yɛbɛtumi akyerɛ nkaa?",
-        "Market prices" to "Tiaa bo",
+        "Market prices" to "Dzɔdzɔ bo",
         "Government subsidies" to "Amanaman ntam akwankyerɛ",
         "Connect with expert" to "Ka kyerɛ wo ho ne adwumayɛfo",
-        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ"
+        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Weather Labels
+        "Temperature" to "Hyeɛ",
+        "Soil temp" to "Asaase hyeɛ",
+        "Humidity" to "Nsutiri ho",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ"
     )
     
     private val dagbaniTranslations = mapOf(
@@ -418,8 +576,15 @@ object LanguageTranslations {
         "Chat" to "Kasa",
         "Weather" to "Sɛnkyerɛnne",
         "Market" to "Tiaa",
-        "Tools" to "Mfaso",
+        "Calendar" to "Kalenda",
         "Profile" to "Nkaabɔ",
+        
+        // App Header & Welcome
+        "Hello" to "Antire",
+        "New Era of Agriculture" to "Kuayɛɛ Ho Bere Foforɔ",
+        "Welcome to AgriBot Ghana" to "Antire AgriBot Ghana",
+        "Your agricultural assistant" to "Wo kuayɛɛ ho kyekyefo",
+        "Sustainable farming solutions for a better tomorrow" to "Kuayɛɛ ho solution a ɛyɛ sustainable ma ɛkyerɛɛ a ɛyɛ papa",
         
         // Home Screen
         "Hello, Farmers" to "Akyire, Kuayɛɛfo",
@@ -439,7 +604,43 @@ object LanguageTranslations {
         "Market prices" to "Tiaa bo",
         "Government subsidies" to "Amanaman ntam akwankyerɛ",
         "Connect with expert" to "Ka kyerɛ wo ho ne adwumayɛfo",
-        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ"
+        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Weather Labels
+        "Temperature" to "Hyeɛ",
+        "Soil temp" to "Asaase hyeɛ",
+        "Humidity" to "Nsutiri ho",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ",
+        
+        // Missing Calendar Keys
+        "Quick Actions" to "Mfasoɛ a ɛyɛ mmerɛw",
+        "All Farming Events" to "Kuayɛɛ Events Nyinaa",
+        "Upcoming Farming Events" to "Kuayɛɛ Events a ɛreba",
+        "View All" to "Hwɛ Nyinaa",
+        "No upcoming events. Add events in the Calendar tab." to "Ɛnyɛ events a ɛreba. Fa events wɔ Calendar tab ho.",
+        "Delete" to "Yi fi"
     )
     
     private val fanteTranslations = mapOf(
@@ -448,8 +649,15 @@ object LanguageTranslations {
         "Chat" to "Kasa",
         "Weather" to "Sɛnkyerɛnne",
         "Market" to "Tiaa",
-        "Tools" to "Mfaso",
+        "Calendar" to "Kalenda",
         "Profile" to "Nkaabɔ",
+        
+        // App Header & Welcome
+        "Hello" to "Akyire",
+        "New Era of Agriculture" to "Kuayɛɛ Ho Bere Foforɔ",
+        "Welcome to AgriBot Ghana" to "Woaba AgriBot Ghana",
+        "Your agricultural assistant" to "Wo kuayɛɛ ho kyekyefo",
+        "Sustainable farming solutions for a better tomorrow" to "Kuayɛɛ ho solution a ɛyɛ sustainable ma ɛkyerɛɛ a ɛyɛ papa",
         
         // Home Screen
         "Hello, Farmers" to "Akyire, Kuayɛɛfo",
@@ -469,7 +677,38 @@ object LanguageTranslations {
         "Market prices" to "Tiaa bo",
         "Government subsidies" to "Amanaman ntam akwankyerɛ",
         "Connect with expert" to "Ka kyerɛ wo ho ne adwumayɛfo",
-        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ"
+        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Weather Labels
+        "Temperature" to "Hyeɛ",
+        "Soil temp" to "Asaase hyeɛ",
+        "Humidity" to "Nsutiri ho",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ",
+        
+        // Missing Calendar Keys
+        "Quick Actions" to "Mfasoɛ a ɛyɛ mmerɛw"
     )
     
     private val hausaTranslations = mapOf(
@@ -478,8 +717,15 @@ object LanguageTranslations {
         "Chat" to "Kasa",
         "Weather" to "Sɛnkyerɛnne",
         "Market" to "Tiaa",
-        "Tools" to "Mfaso",
+        "Calendar" to "Kalenda",
         "Profile" to "Nkaabɔ",
+        
+        // App Header & Welcome
+        "Hello" to "Akyire",
+        "New Era of Agriculture" to "Kuayɛɛ Ho Bere Foforɔ",
+        "Welcome to AgriBot Ghana" to "Woaba AgriBot Ghana",
+        "Your agricultural assistant" to "Wo kuayɛɛ ho kyekyefo",
+        "Sustainable farming solutions for a better tomorrow" to "Kuayɛɛ ho solution a ɛyɛ sustainable ma ɛkyerɛɛ a ɛyɛ papa",
         
         // Home Screen
         "Hello, Farmers" to "Akyire, Kuayɛɛfo",
@@ -499,6 +745,37 @@ object LanguageTranslations {
         "Market prices" to "Tiaa bo",
         "Government subsidies" to "Amanaman ntam akwankyerɛ",
         "Connect with expert" to "Ka kyerɛ wo ho ne adwumayɛfo",
-        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ"
+        "Type your message or use voice..." to "Twerɛ wo nsɛm anaasɛ fa wo nne yɛ",
+        
+        // Calendar Screen
+        "Calendar" to "Kalenda",
+        "Farming Calendar" to "Kuayɛɛ Kalenda",
+        "Add Farming Event" to "Fa Kuayɛɛ Event",
+        "Event Title" to "Event Nkyerɛkyerɛ",
+        "Description" to "Nkyerɛkyerɛ",
+        "Event Type" to "Event Teɛso",
+        "Add" to "Fa",
+        "Cancel" to "Sesa",
+        "Events for" to "Events ma",
+        "Seasonal Farming Guide" to "Bere Bere Kuayɛɛ Akwankyerɛ",
+        "Planting Season" to "Nhaban Bere",
+        "Rainy Season" to "Nsutiri Bere",
+        "Harvest Season" to "Nhaban Yɛɛ Bere",
+        "Dry Season" to "Awɔ Bere",
+        
+        // Weather Labels
+        "Temperature" to "Hyeɛ",
+        "Soil temp" to "Asaase hyeɛ",
+        "Humidity" to "Nsutiri ho",
+        
+        // Event Types
+        "PLANTING" to "Nhaban",
+        "HARVEST" to "Nhaban Yɛɛ",
+        "FERTILIZER" to "Nhaban Ho Dadeɛ",
+        "PEST_CONTROL" to "Nkaa Akwankyerɛ",
+        "OTHER" to "Foforɔ",
+        
+        // Missing Calendar Keys
+        "Quick Actions" to "Mfasoɛ a ɛyɛ mmerɛw"
     )
 }

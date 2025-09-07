@@ -236,7 +236,8 @@ fun FarmersDetailedScreen(
         }
         
         // Scrollable Content
-        LazyColumn(
+        LazyCo
+        '''lumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp),

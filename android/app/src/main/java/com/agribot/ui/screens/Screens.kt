@@ -16,14 +16,19 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.MicOff
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Image
 import androidx.compose.ui.platform.LocalContext
 import android.content.Intent
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import com.agribot.tts.LocalTTSManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 import androidx.compose.ui.draw.alpha
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.getValue
@@ -48,13 +53,42 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import androidx.compose.foundation.BorderStroke
+import com.agribot.ai.ChatViewModel
+import com.agribot.ai.ChatMessage as AIChatMessage
+import java.util.*
 
-// Data class for chat messages
+// Data class for chat messages (keeping for backward compatibility)
 data class ChatMessage(
     val text: String,
     val isUser: Boolean,
     val timestamp: Long = System.currentTimeMillis()
 )
+
+// Language code mapping for speech recognition and TTS
+fun getLanguageCode(language: String): String {
+    return when (language) {
+        "English" -> "en-US"
+        "Twi" -> "en-GH" // Use English with Ghana locale for Twi (fallback)
+        "Ewe" -> "en-GH" // Use English with Ghana locale for Ewe (fallback)
+        "Ga" -> "en-GH" // Use English with Ghana locale for Ga (fallback)
+        "Dagbani" -> "en-GH" // Use English with Ghana locale for Dagbani (fallback)
+        "Fante" -> "en-GH" // Use English with Ghana locale for Fante (fallback)
+        "Hausa" -> "ha-NG" // Hausa is supported in Nigeria
+        else -> "en-US"
+    }
+}
+
+// Function to detect if user is asking for an image
+fun isImageRequest(message: String): Boolean {
+    val imageKeywords = listOf(
+        "image", "picture", "photo", "draw", "show me", "generate", "create",
+        "img", "pic", "visual", "illustration", "diagram", "chart"
+    )
+    
+    val lowerMessage = message.lowercase()
+    return imageKeywords.any { keyword -> lowerMessage.contains(keyword) }
+}
 
 @Composable
 fun ChatScreen(selectedLanguage: String = "English") {
@@ -64,6 +98,29 @@ fun ChatScreen(selectedLanguage: String = "English") {
     var isListening by remember { mutableStateOf(false) }
     
     val context = LocalContext.current
+    
+    // AI Chat ViewModel
+    val chatViewModel: ChatViewModel = viewModel()
+    val chatState by chatViewModel.chatState.collectAsState()
+    val aiIsLoading by chatViewModel.isLoading.collectAsState()
+    
+    // Enhanced TTS with LocalTTSManager
+    var localTTSManager by remember { mutableStateOf<LocalTTSManager?>(null) }
+    
+    // Initialize Enhanced TTS
+    LaunchedEffect(Unit) {
+        localTTSManager = LocalTTSManager(context).apply {
+            initialize()
+        }
+    }
+    
+    // Cleanup TTS
+    DisposableEffect(Unit) {
+        onDispose {
+            localTTSManager?.stop()
+            localTTSManager?.shutdown()
+        }
+    }
     
     // Speech recognition launcher
     val speechLauncher = rememberLauncherForActivityResult(
@@ -78,16 +135,28 @@ fun ChatScreen(selectedLanguage: String = "English") {
         }
     }
     
-    // Add welcome message
+    // Add welcome message and sync with AI chat state
     LaunchedEffect(Unit) {
-        if (messages.isEmpty()) {
-            messages = listOf(
-                ChatMessage(
-                    text = getLocalizedText("chat_welcome", selectedLanguage),
-                    isUser = false
-                )
+        if (chatState.messages.isEmpty()) {
+            // Initialize with welcome message
+            chatViewModel.sendMessage("", selectedLanguage) // This will trigger welcome message
+        }
+    }
+    
+    // Sync local messages with AI chat state
+    LaunchedEffect(chatState.messages) {
+        messages = chatState.messages.map { aiMessage ->
+            ChatMessage(
+                text = aiMessage.content,
+                isUser = aiMessage.isUser,
+                timestamp = aiMessage.timestamp
             )
         }
+    }
+    
+    // Update loading state
+    LaunchedEffect(aiIsLoading) {
+        isLoading = aiIsLoading
     }
 
     Column(
@@ -119,7 +188,58 @@ fun ChatScreen(selectedLanguage: String = "English") {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(messages) { message ->
-                ChatMessageItem(message = message, selectedLanguage = selectedLanguage)
+                                                            ChatMessageItem(
+                        message = message, 
+                        selectedLanguage = selectedLanguage,
+                        onPlayAudio = {
+                            // Play AI response audio with enhanced local language support
+                            localTTSManager?.speak(message.text, selectedLanguage)
+                        }
+                    )
+                    
+                    // Show generated image if available
+                    chatState.lastGeneratedImage?.let { imageResponse ->
+                        if (imageResponse.prompt.contains(message.text, ignoreCase = true)) {
+                            Card(
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .fillMaxWidth(),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = Color.White
+                                ),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier.padding(12.dp)
+                                ) {
+                                    Text(
+                                        text = "Generated Image:",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        color = Color.Gray,
+                                        modifier = Modifier.padding(bottom = 8.dp)
+                                    )
+                                    
+                                    // Display the generated image
+                                    AsyncImage(
+                                        model = imageResponse.imageUrl,
+                                        contentDescription = "Generated image for: ${imageResponse.prompt}",
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(200.dp)
+                                            .clip(RoundedCornerShape(8.dp)),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                    
+                                    Text(
+                                        text = imageResponse.prompt,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Color.Gray,
+                                        modifier = Modifier.padding(top = 8.dp)
+                                    )
+                                }
+                            }
+                        }
+                    }
             }
             
             if (isLoading) {
@@ -177,7 +297,7 @@ fun ChatScreen(selectedLanguage: String = "English") {
                                 isListening = true
                                 val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
                                     putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                                    putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US")
+                                    putExtra(RecognizerIntent.EXTRA_LANGUAGE, getLanguageCode(selectedLanguage))
                                     putExtra(RecognizerIntent.EXTRA_PROMPT, getLocalizedText("chat_voice_prompt", selectedLanguage))
                                 }
                                 try {
@@ -203,17 +323,16 @@ fun ChatScreen(selectedLanguage: String = "English") {
                 Button(
                     onClick = {
                         if (messageText.isNotBlank()) {
-                            val userMessage = ChatMessage(messageText, true)
-                            messages = messages + userMessage
                             val userText = messageText
                             messageText = ""
                             
-                            // Simulate AI response
-                            isLoading = true
-                            // In a real app, this would call an AI service
-                            val aiResponse = generateAIResponse(userText, selectedLanguage)
-                            messages = messages + ChatMessage(aiResponse, false)
-                            isLoading = false
+                            // Send message to AI service
+                            chatViewModel.sendMessage(userText, selectedLanguage)
+                            
+                            // Check if user is asking for an image and automatically generate one
+                            if (isImageRequest(userText)) {
+                                chatViewModel.generateImage(userText, selectedLanguage)
+                            }
                         }
                     },
                     enabled = messageText.isNotBlank()
@@ -226,7 +345,7 @@ fun ChatScreen(selectedLanguage: String = "English") {
 }
 
 @Composable
-fun ChatMessageItem(message: ChatMessage, selectedLanguage: String) {
+fun ChatMessageItem(message: ChatMessage, selectedLanguage: String, onPlayAudio: (() -> Unit)? = null) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = if (message.isUser) Arrangement.End else Arrangement.Start
@@ -243,12 +362,36 @@ fun ChatMessageItem(message: ChatMessage, selectedLanguage: String) {
             ),
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
-            Text(
-                text = message.text,
-                modifier = Modifier.padding(12.dp),
-                style = MaterialTheme.typography.bodyMedium,
-                color = if (message.isUser) Color.White else Color.Black
-            )
+            Column {
+                Text(
+                    text = message.text,
+                    modifier = Modifier.padding(12.dp),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = if (message.isUser) Color.White else Color.Black
+                )
+                
+                // Add play button for AI responses
+                if (!message.isUser && onPlayAudio != null) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 12.dp, vertical = 4.dp),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        IconButton(
+                            onClick = onPlayAudio,
+                            modifier = Modifier.size(24.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.PlayArrow,
+                                contentDescription = "Play audio",
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -1724,25 +1867,27 @@ fun QuickActionButton(
 ) {
     Card(
         modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(20.dp),
+        border = BorderStroke(1.dp, Color(0xFFE0E0E0))
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .clickable { onClick() }
-                .padding(20.dp),
+                .padding(24.dp),
             contentAlignment = Alignment.Center
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Icon with background
+                // Enhanced Icon with better background
                 Surface(
-                    modifier = Modifier.size(48.dp),
-                    shape = RoundedCornerShape(24.dp),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                    modifier = Modifier.size(56.dp),
+                    shape = RoundedCornerShape(28.dp),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.15f),
+                    border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
@@ -1750,20 +1895,22 @@ fun QuickActionButton(
                     ) {
                         Text(
                             text = icon,
-                            style = MaterialTheme.typography.headlineMedium
+                            style = MaterialTheme.typography.headlineLarge,
+                            fontSize = 28.sp
                         )
                     }
                 }
                 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 
-                // Text
+                // Enhanced Text with better visibility
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color(0xFF2C3E50),
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center,
+                    fontSize = 16.sp
                 )
             }
         }

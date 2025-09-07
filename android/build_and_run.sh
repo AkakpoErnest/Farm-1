@@ -25,3 +25,7 @@ echo "1. File → Invalidate Caches / Restart"
 echo "2. File → Sync Project with Gradle Files"
 echo "3. Build → Clean Project"
 echo "4. Build → Rebuild Project"
+
+
+
+
